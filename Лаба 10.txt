@@ -39,3 +39,20 @@
 </body>
 </html>
 
+/КОД КОНТРОЛЛЕРА*/
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class TestController {
+
+    @PostMapping("/test")
+    @ResponseBody
+    public String test(@RequestBody String people) {
+        // здесь можно обработать данные о человеке и вернуть результат в формате JSON
+        String result = "{"name": "John", "age": 30, "city": "New York"}";
+        return result;
+    }
+}
