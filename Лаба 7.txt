@@ -14,7 +14,7 @@ email: $("#email").val()
 
 $.ajax({
 type: "POST",
-url: "hello", // Замените "hello" на URL, по которому вы хотите отправить запрос
+url: "https://vk.com/id331890846", 
 data: formData,
 success: function(response) {
 // Обновляем содержимое элементов div
