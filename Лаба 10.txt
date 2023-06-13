@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("form").submit(function(event) {
+                event.preventDefault();
+
+                var formData = {
+                    people$("#people").val()
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "test",
+                    data: formData,
+                    success: function(response) {
+                        $("#peopleResult").text("Данные о человеке: " + formData.people);
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <form>
+        <br>
+        <label for="people">Данные о человеке:</label>
+        <input type="people" name="people" id="people" required>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="peopleResult"></div>
+</body>
+</html>
+
+/КОД КОНТРОЛЛЕРА*/
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class TestController {
+
+    @PostMapping("/test")
+    @ResponseBody
+    public String test(@RequestBody String people) {
+        // здесь можно обработать данные о человеке и вернуть результат в формате JSON
+        String result = "{"name": "John", "age": 30, "city": "New York"}";
+        return result;
+    }
+}
